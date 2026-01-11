@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+root="$(dirname "$0")/.."
+target="$HOME/.tmux.conf"
+
+case "$1" in
+    -h|--help)
+        echo "Usage: $(basename "$0") [-f|--force]"
+        exit 0
+        ;;
+    -f|--force)
+        ;;
+    *)
+        [[ -f "$target" ]] && echo "$target exists. Use -f to overwrite." && exit 1
+        ;;
+esac
+
+cp "$root/.tmux.conf" "$target"
