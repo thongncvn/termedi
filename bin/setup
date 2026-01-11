@@ -1,7 +1,8 @@
 #!/usr/bin/bash
 
 root="$(dirname "$0")/.."
-target="$HOME/.tmux.conf"
+target_tmux="$HOME/.tmux.conf"
+target_nvim="$HOME/.config/nvim"
 
 case "$1" in
     -h|--help)
@@ -11,8 +12,10 @@ case "$1" in
     -f|--force)
         ;;
     *)
-        [[ -f "$target" ]] && echo "$target exists. Use -f to overwrite." && exit 1
+        [[ -f "$target_tmux" ]] && echo "$target_tmux exists. Use -f to overwrite." && exit 1
+        [[ -d "$target_nvim" ]] && echo "$target_nvim exists. Use -f to overwrite." && exit 1
         ;;
 esac
 
-cp "$root/.tmux.conf" "$target"
+cp "$root/.tmux.conf" "$target_tmux"
+rm -rf "$target_nvim" && cp -R "$root/nvim" "$target_nvim"
