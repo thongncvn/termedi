@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 root="$(dirname "$0")/.."
 target_tmux="$HOME/.tmux.conf"
@@ -27,7 +27,9 @@ if [[ ! -f "$root/.env" ]]; then
 fi
 
 function overwrite_tmux() {
+  set -a
   source "$root/.env"
+  set +a
   envsubst < "$root/.tmux.conf.template"
 }
 
