@@ -4,6 +4,11 @@ root="$(dirname "$0")/.."
 target_tmux="$HOME/.tmux.conf"
 target_nvim="$HOME/.config/nvim"
 
+function panic() {
+  echo "$@"
+  exit 1
+}
+
 case "$1" in
     -h|--help)
         echo "Usage: $(basename "$0") [-f|--force]"
@@ -12,10 +17,19 @@ case "$1" in
     -f|--force)
         ;;
     *)
-        [[ -f "$target_tmux" ]] && echo "$target_tmux exists. Use -f to overwrite." && exit 1
-        [[ -d "$target_nvim" ]] && echo "$target_nvim exists. Use -f to overwrite." && exit 1
+        [[ -f "$target_tmux" ]] && panic "$target_tmux exists. Use -f to overwrite."
+        [[ -d "$target_nvim" ]] && panic "$target_nvim exists. Use -f to overwrite."
         ;;
 esac
 
-cp "$root/.tmux.conf" "$target_tmux"
+if [[ ! -f "$root/.env" ]]; then
+  panic 'There is no .env file.'
+fi
+
+function overwrite_tmux() {
+  source "$root/.env"
+  envsubst < "$root/.tmux.conf.template"
+}
+
+overwrite_tmux > "$target_tmux"
 rm -rf "$target_nvim" && cp -R "$root/nvim" "$target_nvim"

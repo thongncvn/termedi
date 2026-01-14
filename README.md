@@ -6,5 +6,5 @@ My 2026 configuration for tmux and neovim.
 
 Run this command to set everything up at once:
 ```sh
-./bin/setup -f
+./scripts/setup -f
 ```

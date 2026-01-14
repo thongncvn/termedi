@@ -1,0 +1,16 @@
+set -g status-right ""
+set -g escape-time 0
+set -g history-limit 0
+set -g mouse on
+set -g mode-keys vi
+set -g status-style bg=$TMUX_COLOR
+
+# Make new split and window preserve the current path
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+# Vi copy mode
+bind -T copy-mode-vi v send -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "termux-clipboard-set"
+
