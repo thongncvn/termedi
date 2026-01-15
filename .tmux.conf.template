@@ -1,6 +1,5 @@
 set -g status-right ""
 set -g escape-time 0
-set -g history-limit 0
 set -g mouse on
 set -g mode-keys vi
 set -g status-style bg=$TMUX_COLOR
