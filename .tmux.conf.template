@@ -4,6 +4,13 @@ set -g mouse on
 set -g mode-keys vi
 set -g status-style bg=$TMUX_COLOR
 
+# Window status
+set -g window-status-current-format "#I:#W"
+set -g window-status-current-style "bold,underscore"
+set -g window-status-format "#I:#W"
+set -g window-status-style "fg=#aaaaaa"
+set -g window-status-separator " "
+
 # Make new split and window preserve the current path
 bind '"' split-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
