@@ -5,9 +5,9 @@ set -g mode-keys vi
 set -g status-style bg=$TMUX_COLOR
 
 # Window status
-set -g window-status-current-format "#I:#W"
+set -g window-status-current-format "#W"
 set -g window-status-current-style "bold,underscore"
-set -g window-status-format "#I:#W"
+set -g window-status-format "#W"
 set -g window-status-style "fg=#aaaaaa"
 set -g window-status-separator " "
 
