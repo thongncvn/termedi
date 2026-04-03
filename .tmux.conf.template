@@ -11,6 +11,12 @@ set -g window-status-format "#W"
 set -g window-status-style "fg=#aaaaaa"
 set -g window-status-separator " "
 
+# Vim-style pane navigation
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
 # Make new split and window preserve the current path
 bind '"' split-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
