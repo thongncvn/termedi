@@ -33,5 +33,11 @@ function overwrite_tmux() {
   envsubst < "$root/.tmux.conf.template"
 }
 
+function install_tmux() {
+  command -v mise >/dev/null 2>&1 || return 0
+  mise use -g "tmux@latest"
+}
+
 overwrite_tmux > "$target_tmux"
 rm -rf "$target_nvim" && cp -R "$root/nvim" "$target_nvim"
+install_tmux
