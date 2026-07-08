@@ -1,6 +1,8 @@
 set -g status-right ""
 set -g escape-time 0
 set -g mouse on
+# Needed so apps (e.g. vim/nvim autoread) see terminal focus in/out events
+set -g focus-events on
 set -g mode-keys vi
 set -g status-style bg=$TMUX_COLOR
 
