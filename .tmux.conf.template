@@ -1,4 +1,5 @@
-set -g status-right ""
+# This file is the source for ~/.tmux.conf (see ../termedi/bin/setup). Edit here, then run bin/setup -f to install.
+set -g status-right "#{?window_zoomed_flag,🔍 ,}"
 set -g escape-time 0
 set -g mouse on
 # Needed so apps (e.g. vim/nvim autoread) see terminal focus in/out events
