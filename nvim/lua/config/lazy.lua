@@ -25,6 +25,7 @@ vim.opt.cmdheight = 0
 vim.opt.linebreak = true
 vim.opt.laststatus = 0
 vim.opt.showmode = false
+vim.opt.background = "dark"
 
 -- Line numbers
 vim.opt.number = false        -- Hiển thị số dòng
@@ -64,3 +65,6 @@ require("lazy").setup({
     },
   },
 })
+
+-- `install.colorscheme` only applies while installing plugins, so set it for normal runs too
+vim.cmd.colorscheme("habamax")
