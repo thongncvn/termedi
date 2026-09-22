@@ -46,7 +46,7 @@ require("lazy").setup({
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
-  checker = { enabled = true },
+  checker = { enabled = true, notify = false },
   ui = {
     icons = {
       cmd = ">",
@@ -68,3 +68,11 @@ require("lazy").setup({
 
 -- `install.colorscheme` only applies while installing plugins, so set it for normal runs too
 vim.cmd.colorscheme("habamax")
+
+-- Auto update plugins on launch, silently (no UI, no notifications)
+vim.api.nvim_create_autocmd("VimEnter", {
+  once = true,
+  callback = function()
+    require("lazy").update({ show = false })
+  end,
+})
