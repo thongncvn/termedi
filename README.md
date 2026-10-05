@@ -1,6 +1,6 @@
 # termedi
 
-My 2026 configuration for tmux and neovim.
+My 2026 configuration for tmux, neovim and lazygit.
 
 ## Usage
 

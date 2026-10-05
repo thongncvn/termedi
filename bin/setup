@@ -3,6 +3,7 @@
 root="$(dirname "$0")/.."
 target_tmux="$HOME/.tmux.conf"
 target_nvim="$HOME/.config/nvim"
+target_lazygit="$HOME/.config/lazygit"
 
 function panic() {
   echo "$@"
@@ -19,6 +20,7 @@ case "$1" in
     *)
         [[ -f "$target_tmux" ]] && panic "$target_tmux exists. Use -f to overwrite."
         [[ -d "$target_nvim" ]] && panic "$target_nvim exists. Use -f to overwrite."
+        [[ -d "$target_lazygit" ]] && panic "$target_lazygit exists. Use -f to overwrite."
         ;;
 esac
 
@@ -45,5 +47,6 @@ function install_treesitter_cli() {
 
 overwrite_tmux > "$target_tmux"
 rm -rf "$target_nvim" && cp -R "$root/nvim" "$target_nvim"
+rm -rf "$target_lazygit" && cp -R "$root/lazygit" "$target_lazygit"
 install_tmux
 install_treesitter_cli
