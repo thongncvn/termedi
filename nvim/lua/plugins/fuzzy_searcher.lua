@@ -42,7 +42,7 @@ return {
 
     -- Key mappings
     vim.keymap.set('n', '<leader>p', '<cmd>FzfLua files<cr>', { desc = 'Find files' })
-    vim.keymap.set('n', '<leader>P', '<cmd>FzfLua keymaps<cr>', { desc = 'Keymaps' })
+    vim.keymap.set('n', '<leader>P', '<cmd>FzfLua commands<cr>', { desc = 'Commands' })
     vim.keymap.set('n', '<leader>F', '<cmd>FzfLua live_grep<cr>', { desc = 'Live grep' })
     vim.keymap.set('n', '<leader>G', '<cmd>FzfLua git_status<cr>', { desc = 'Git changed files' })
   end,
